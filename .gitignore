@@ -1,6 +1,7 @@
 *
 
-!*.sv
+!*/*.sv
+!*/*_tb.sv
 !*.pdf
 !.gitignore
 

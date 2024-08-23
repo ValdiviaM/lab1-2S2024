@@ -8,4 +8,25 @@ module CLA (
   output logic       c_out
 );
 
+  logic [7:0] prop;
+  logic [7:0] gen; 
+  logic [8:0] c; 
+
+  // Calcula propagate y generate
+  assign prop = a ^ b;
+  assign gen = a & b;
+
+  // Calcula el array de carries
+  assign c[0] = c_in;
+  genvar i;
+  generate
+    for (i = 0; i < 8; i++) begin
+      assign c[i+1] = gen[i] | (prop[i] & c[i]);
+    end
+  endgenerate
+
+  // Calcula suma y carry de salida
+  assign sum = prop ^ c[7:0];
+  assign c_out = c[8];
+
 endmodule
