@@ -10,9 +10,8 @@ module RCA #(
   output logic            cout
 );
 
-    logic [BITS:0] carry; // Vector de acarreo
+    logic [BITS:0] carry; // array de carries
 
-    // Inicializar el acarreo de entrada
     assign carry[0] = cin;
 
     // Instanciar los full-adders
@@ -29,7 +28,6 @@ module RCA #(
         end
     endgenerate
 
-    // El bit de acarreo de salida
     assign cout = carry[BITS];
 
 endmodule

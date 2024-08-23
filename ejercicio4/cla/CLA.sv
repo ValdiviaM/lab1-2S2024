@@ -16,7 +16,7 @@ module CLA (
   assign prop = a ^ b;
   assign gen = a & b;
 
-  // Calculate carry signals
+  // Calcula el array de carries
   assign c[0] = c_in;
   genvar i;
   generate
@@ -25,7 +25,7 @@ module CLA (
     end
   endgenerate
 
-  // Calculate sum and final carry out
+  // Calcula suma y carry de salida
   assign sum = prop ^ c[7:0];
   assign c_out = c[8];
 
