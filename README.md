@@ -22,5 +22,5 @@ Se implementó el testbench del RCA y FA.
 Se encontró un bug en una operación de la ALU pero no se pudo solucionar.
 
 ## 22-8
-
+                                            
 Se agregó el CLA con su respectivo testbench y se solucionó el error de la ALU, además se hizo el testbench de la ALU.
