@@ -33,14 +33,23 @@ Para el diseño se hizo una tabla de verdad para un grupo de LEDs y se generaliz
 |      1      |     0    |    1    |
 |      1      |     1    |    0    |
 
-<img src="https://raw.githubusercontent.com/ValdiviaM/lab1-2S2024/main/ejercicio1/circuito1bloque.pdf" width="300">   
-                                
-Se seleccionó una arquitectura moore para la máquina de estados y el diagrama de estados es:
+Lo cual en circuito debe verse de la siguiente forma si tomamos en cuenta un grupo de switches y LEDs:
 
-<img src="https://raw.githubusercontent.com/pmendozap/Ejemplo_TDD_2_22/main/doc/state_diag.svg" width="300" >
+<div align=center>
+    <img src="https://raw.githubusercontent.com/ValdiviaM/lab1-2S2024/main/ejercicio1/circuito1bloque-1.png" height="400">         
+</div>                            
 
-la implementación se hizo en tres bloques always: uno para la variable de estado, uno para la decodificación de siguiente estado y otro para la generación de la salida. 
+Y se hace lo mismo para los demás grupos de switches con sus respectivos botones y LEDs, de forma que el código se vería algo así:
 
-En esta máquina la salida **NO** está registrada.
+```SystemVerilog
+always @(*) begin
+    led_po[3:0] = switch_pi[3:0] & {4{~boton_pi[0]}};
+    led_po[7:4] = switch_pi[7:4] & {4{~boton_pi[1]}};
+    led_po[11:8] = switch_pi[11:8] & {4{~boton_pi[2]}};
+    led_po[15:12] = switch_pi[15:12] & {4{~boton_pi[3]}};
+end
+```
 
 #### 5. Testbench
+
+Para el testbench se hizo de manera aleatoria y autoverificable, para este caso no hay muchos caso esquina entonces mientras se observe un buen comportamiento en general se pude decir que funciona correctamente.
